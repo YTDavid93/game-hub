@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { breakpoints } from "./constants/BreakPoints"
+import NavBar from "./components/NavBar"
 
 const Grid = styled.div `
   display: grid;
@@ -14,7 +15,6 @@ const Grid = styled.div `
   }
 `
 const Nav = styled.nav `
-  background-color: red;
   grid-area: nav;
 `
 
@@ -34,7 +34,9 @@ const Main = styled.main `
 const App = () => {
   return (
       <Grid>
-        <Nav>Nav</Nav>
+        <Nav>
+          <NavBar />
+        </Nav>
         <Aside>aside</Aside>
         <Main>Main</Main>
       </Grid>
