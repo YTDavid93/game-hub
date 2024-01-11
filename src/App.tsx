@@ -19,6 +19,7 @@ const Grid = styled.div`
   }
   color: ${(props) => props.theme.fontColor};
 `;
+
 const Nav = styled.nav`
   grid-area: nav;
 `;
@@ -26,7 +27,7 @@ const Nav = styled.nav`
 const Aside = styled.aside`
   grid-area: aside;
 
-  ${breakpoints.small} {
+  ${breakpoints.small, breakpoints.medium} {
     display: none;
   }
 `;
