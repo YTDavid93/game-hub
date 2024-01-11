@@ -1,19 +1,28 @@
-import styled from 'styled-components'
-import logo from '../assets/logo.webp'
+import { ReactNode } from "react";
+import styled from "styled-components";
+import logo from "../assets/logo.webp";
 
-const Flex = styled.div `
-    display: flex;
-`
-const Image = styled.img `
-    width: 60px;
-`
-const NavBar = () => {
-  return (
-    <Flex>
-       <Image src={logo} />
-       <h4>Navbar</h4>
-    </Flex>
-  )
+interface Props {
+  children: ReactNode;
 }
 
-export default NavBar
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+`;
+const Image = styled.img`
+  width: 60px;
+`;
+
+const NavBar = ({ children }: Props) => {
+  return (
+    <Flex>
+      <Image src={logo} />
+      {children}
+    </Flex>
+  );
+};
+
+export default NavBar;

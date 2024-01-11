@@ -1,46 +1,59 @@
-import styled from "styled-components"
-import { breakpoints } from "./constants/BreakPoints"
-import NavBar from "./components/NavBar"
+import styled, { ThemeProvider } from "styled-components";
+import { breakpoints } from "./constants/BreakPoints";
+import { darktheme, lightTheme, GlobalStyles } from "./components/theme";
+import NavBar from "./components/NavBar";
+import ColorModeSwitch from "./components/ColorModeSwitch";
+import { useState } from "react";
 
-const Grid = styled.div `
+const Grid = styled.div`
   display: grid;
-  grid-template-areas: 
-    "nav nav" 
+  grid-template-areas:
+    "nav nav"
     "aside main";
 
   ${breakpoints.small} {
-    grid-template-areas: 
+    grid-template-areas:
       "nav nav"
       "main main";
   }
-`
-const Nav = styled.nav `
+  color: ${(props) => props.theme.fontColor};
+`;
+const Nav = styled.nav`
   grid-area: nav;
-`
+`;
 
 const Aside = styled.aside`
-  background-color: blue;
   grid-area: aside;
 
   ${breakpoints.small} {
     display: none;
   }
-`
-const Main = styled.main `
-  background-color: green;
+`;
+const Main = styled.main`
   grid-area: main;
-`
+`;
 
 const App = () => {
+  const [theme, setTheme] = useState<"dark" | "light">("light");
+
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
   return (
+    <ThemeProvider theme={theme === "light" ? lightTheme : darktheme}>
+      <GlobalStyles />
       <Grid>
         <Nav>
-          <NavBar />
+          <NavBar>
+            <ColorModeSwitch onChange={themeToggler} theme={theme} />
+          </NavBar>
         </Nav>
         <Aside>aside</Aside>
         <Main>Main</Main>
       </Grid>
-  )
-}
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
