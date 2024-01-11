@@ -4,6 +4,7 @@ import { darktheme, lightTheme, GlobalStyles } from "./components/theme";
 import NavBar from "./components/NavBar";
 import ColorModeSwitch from "./components/ColorModeSwitch";
 import { useState } from "react";
+import GameGrid from "./components/GameGrid";
 
 const Grid = styled.div`
   display: grid;
@@ -50,7 +51,9 @@ const App = () => {
           </NavBar>
         </Nav>
         <Aside>aside</Aside>
-        <Main>Main</Main>
+        <Main>
+          <GameGrid />
+        </Main>
       </Grid>
     </ThemeProvider>
   );
