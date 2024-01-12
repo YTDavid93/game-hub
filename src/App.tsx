@@ -36,7 +36,7 @@ const Main = styled.main`
 `;
 
 const App = () => {
-  const [theme, setTheme] = useState<"dark" | "light">("light");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -51,7 +51,7 @@ const App = () => {
             <ColorModeSwitch onChange={themeToggler} theme={theme} />
           </NavBar>
         </Nav>
-        <Aside>aside</Aside>
+        <Aside></Aside>
         <Main>
           <GameGrid />
         </Main>
