@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { Game } from "../hooks/useGames"
 import PlatformIcons from "./PlatformIcons";
+import CriticScore from "./CriticScore";
 
 interface Props {
     game: Game
@@ -30,14 +31,21 @@ const Heading = styled.h1`
   padding: 5px 15px;
 `;
 
-
+const HorizentalDiv = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+`
 
 const GameCard = ({ game }: Props) => {
   return (
     <Items>
       <Image src={game.background_image} />
       <Heading>{game.name}</Heading>
-      <PlatformIcons platforms={game.parent_platforms.map(p => p.platform)}/>
+      <HorizentalDiv>
+        <PlatformIcons platforms={game.parent_platforms.map(p => p.platform)}/>
+        <CriticScore score={game.metacritic} />
+      </HorizentalDiv>
     </Items>
   )
 }
