@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Game } from "../hooks/useGames"
 import PlatformIcons from "./PlatformIcons";
 import CriticScore from "./CriticScore";
+import getCroppedImageUrl from "./services/image-url";
 
 interface Props {
     game: Game
@@ -9,7 +10,6 @@ interface Props {
 
 const Image = styled.img`
   height: 12.5rem;
-  width: 350px;
   background-size: cover;
   background-repeat: no-repeat;
 `;
@@ -40,14 +40,16 @@ const HorizentalDiv = styled.div`
 const GameCard = ({ game }: Props) => {
   return (
     <Items>
-      <Image src={game.background_image} />
+      <Image src={getCroppedImageUrl(game.background_image)} />
       <Heading>{game.name}</Heading>
       <HorizentalDiv>
-        <PlatformIcons platforms={game.parent_platforms.map(p => p.platform)}/>
+        <PlatformIcons
+          platforms={game.parent_platforms.map((p) => p.platform)}
+        />
         <CriticScore score={game.metacritic} />
       </HorizentalDiv>
     </Items>
-  )
+  );
 }
 
 export default GameCard
