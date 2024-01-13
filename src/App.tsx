@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import ColorModeSwitch from "./components/ColorModeSwitch";
 import { useState } from "react";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 const Grid = styled.div`
   display: grid;
@@ -51,7 +52,9 @@ const App = () => {
             <ColorModeSwitch onChange={themeToggler} theme={theme} />
           </NavBar>
         </Nav>
-        <Aside></Aside>
+        <Aside>
+          <GenreList />
+        </Aside>
         <Main>
           <GameGrid />
         </Main>
