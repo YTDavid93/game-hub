@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import useGames from "../hooks/useGames"
 import GameCard from "./GameCard"
 import { breakpoints } from "../constants/BreakPoints"
 import GameCardSkeleton from "./GameCardSkeleton"
+import useGames from "../hooks/useGames"
 
  const StyleGrid = styled.div `
     display: grid;
@@ -20,7 +20,7 @@ import GameCardSkeleton from "./GameCardSkeleton"
 
  const GameGrid = () => {
 
-   const { games, error, isloading} = useGames()
+   const { data, error, isloading} = useGames()
 
    return (
     <>
@@ -28,7 +28,7 @@ import GameCardSkeleton from "./GameCardSkeleton"
         
         <StyleGrid>
                 {isloading && <GameCardSkeleton />} 
-                {games.map(game => 
+                {data.map(game => 
                 <GameCard key="game.id" game={game} />
             )}
         </StyleGrid>
