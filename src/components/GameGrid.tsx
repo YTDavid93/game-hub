@@ -3,6 +3,7 @@ import GameCard from "./GameCard"
 import { breakpoints } from "../constants/BreakPoints"
 import GameCardSkeleton from "./GameCardSkeleton"
 import useGames from "../hooks/useGames"
+import { Genre } from "../hooks/useGenres"
 
  const StyleGrid = styled.div `
     display: grid;
@@ -18,22 +19,25 @@ import useGames from "../hooks/useGames"
     }
 `
 
- const GameGrid = () => {
+interface Props {
+  selectedGenre: Genre | null;
+}
 
-   const { data, error, isloading} = useGames()
+ const GameGrid = ({ selectedGenre }: Props) => {
+   const { data, error, isloading } = useGames(selectedGenre);
 
    return (
-    <>
-        {error && <p>{error}</p>}
-        
-        <StyleGrid>
-                {isloading && <GameCardSkeleton />} 
-                {data.map(game => 
-                <GameCard key="game.id" game={game} />
-            )}
-        </StyleGrid>
-    </>
-   )
- }
+     <>
+       {error && <p>{error}</p>}
+
+       <StyleGrid>
+         {isloading && <GameCardSkeleton />}
+         {data.map((game) => (
+           <GameCard key="game.id" game={game} />
+         ))}
+       </StyleGrid>
+     </>
+   );
+ };
  
  export default GameGrid

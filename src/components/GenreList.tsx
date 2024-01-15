@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import getCroppedImageUrl from "./services/image-url";
-import useGenres from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 
 
 const List = styled.ul`
@@ -23,12 +23,20 @@ const Image = styled.img`
   border-radius: 8px;
 `;
 
-const Text = styled.p`
+const Button = styled.button`
    margin: 0px 0px 0px 8px;
    font-size: 1rem;
-`
+   cursor: pointer;
 
-const GenreList = () => {
+   &:hover {
+     text-decoration: underline;
+   }
+`
+interface Props {
+   onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre}: Props) => {
   const { data } = useGenres();
   return (
     <List>
@@ -36,7 +44,7 @@ const GenreList = () => {
         <ListItem key={genre.id}>
           <HStack>
             <Image src={getCroppedImageUrl(genre.image_background)} />
-            <Text>{genre.name}</Text>
+            <Button onClick={() => onSelectGenre(genre)} as="a">{genre.name}</Button>
           </HStack>
         </ListItem>
       ))}

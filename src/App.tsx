@@ -6,6 +6,7 @@ import ColorModeSwitch from "./components/ColorModeSwitch";
 import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { Genre } from "./hooks/useGenres";
 
 const Grid = styled.div`
   display: grid;
@@ -38,6 +39,9 @@ const Main = styled.main`
 `;
 
 const App = () => {
+  
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   const themeToggler = () => {
@@ -54,10 +58,10 @@ const App = () => {
           </NavBar>
         </Nav>
         <Aside>
-          <GenreList />
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
         </Aside>
         <Main>
-          <GameGrid />
+          <GameGrid selectedGenre={selectedGenre}  />
         </Main>
       </Grid>
     </ThemeProvider>

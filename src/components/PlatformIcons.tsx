@@ -44,7 +44,7 @@ const PlatformIcons = ({ platforms }: Props) => {
   return (
     <PlatformIcon>
       {platforms.map((platform) => (
-        <Icons as={iconMap[platform.slug]} />
+        <Icons key={platform.id} as={iconMap[platform.slug]} />
       ))}
     </PlatformIcon>
   );
