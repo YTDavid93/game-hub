@@ -12,7 +12,7 @@ const Grid = styled.div`
   grid-template-areas:
     "nav nav"
     "aside main";
-
+    
   ${breakpoints.small} {
     grid-template-areas:
       "nav nav"
@@ -27,6 +27,7 @@ const Nav = styled.nav`
 
 const Aside = styled.aside`
   grid-area: aside;
+  padding: 0px 20px;
 
   ${breakpoints.small, breakpoints.medium} {
     display: none;
