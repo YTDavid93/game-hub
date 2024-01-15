@@ -33,7 +33,7 @@ interface Props {
        <StyleGrid>
          {isloading && <GameCardSkeleton />}
          {data.map((game) => (
-           <GameCard key="game.id" game={game} />
+           <GameCard key={game.id} game={game} />
          ))}
        </StyleGrid>
      </>
