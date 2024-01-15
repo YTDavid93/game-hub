@@ -23,20 +23,22 @@ const Image = styled.img`
   border-radius: 8px;
 `;
 
-const Button = styled.button`
-   margin: 0px 0px 0px 8px;
-   font-size: 1rem;
-   cursor: pointer;
+const Button = styled.button<{ isSelected: boolean}>`
+  margin: 0px 0px 0px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+  font-weight: ${({ isSelected}) => (isSelected ? 'bold' : 'normal')};
+`;
 
-   &:hover {
-     text-decoration: underline;
-   }
-`
 interface Props {
    onSelectGenre: (genre: Genre) => void;
+   selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre}: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre}: Props) => {
   const { data } = useGenres();
   return (
     <List>
@@ -44,7 +46,13 @@ const GenreList = ({ onSelectGenre}: Props) => {
         <ListItem key={genre.id}>
           <HStack>
             <Image src={getCroppedImageUrl(genre.image_background)} />
-            <Button onClick={() => onSelectGenre(genre)} as="a">{genre.name}</Button>
+            <Button
+              isSelected={genre.id === selectedGenre?.id}
+              onClick={() => onSelectGenre(genre)}
+              as="a"
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}

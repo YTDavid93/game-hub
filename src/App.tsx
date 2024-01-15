@@ -58,10 +58,13 @@ const App = () => {
           </NavBar>
         </Nav>
         <Aside>
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </Aside>
         <Main>
-          <GameGrid selectedGenre={selectedGenre}  />
+          <GameGrid selectedGenre={selectedGenre} />
         </Main>
       </Grid>
     </ThemeProvider>
