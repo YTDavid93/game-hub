@@ -23,14 +23,14 @@ const Image = styled.img`
   border-radius: 8px;
 `;
 
-const Button = styled.button<{ isSelected: boolean}>`
+const Button = styled.button<{ $isSelected: boolean}>`
   margin: 0px 0px 0px 8px;
   font-size: 1rem;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
-  font-weight: ${({ isSelected}) => (isSelected ? 'bold' : 'normal')};
+  font-weight: ${({ $isSelected}) => ($isSelected ? 'bold' : 'normal')};
 `;
 
 interface Props {
@@ -47,7 +47,7 @@ const GenreList = ({ onSelectGenre, selectedGenre}: Props) => {
           <HStack>
             <Image src={getCroppedImageUrl(genre.image_background)} />
             <Button
-              isSelected={genre.id === selectedGenre?.id}
+              $isSelected={genre.id === selectedGenre?.id}
               onClick={() => onSelectGenre(genre)}
               as="a"
             >
