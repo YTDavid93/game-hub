@@ -8,6 +8,8 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
+import { Platform } from "./hooks/useGames";
+
 
 const Grid = styled.div`
   display: grid;
@@ -43,6 +45,8 @@ const App = () => {
   
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
+
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   const themeToggler = () => {
@@ -65,8 +69,14 @@ const App = () => {
           />
         </Aside>
         <Main>
-          <PlatformSelector />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
+          />
+          <GameGrid
+            selectedPlatform={selectedPlatform}
+            selectedGenre={selectedGenre}
+          />
         </Main>
       </Grid>
     </ThemeProvider>

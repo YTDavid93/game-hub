@@ -2,7 +2,7 @@ import styled from "styled-components"
 import GameCard from "./GameCard"
 import { breakpoints } from "../constants/BreakPoints"
 import GameCardSkeleton from "./GameCardSkeleton"
-import useGames from "../hooks/useGames"
+import useGames, { Platform } from "../hooks/useGames"
 import { Genre } from "../hooks/useGenres"
 
  const StyleGrid = styled.div `
@@ -21,10 +21,11 @@ import { Genre } from "../hooks/useGenres"
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
- const GameGrid = ({ selectedGenre }: Props) => {
-   const { data, error, isloading } = useGames(selectedGenre);
+ const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+   const { data, error, isloading } = useGames(selectedGenre, selectedPlatform);
 
    return (
      <>
