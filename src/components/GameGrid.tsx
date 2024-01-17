@@ -26,13 +26,14 @@ interface Props {
 
  const GameGrid = ({ gamequery }: Props) => {
    const { data, error, isloading } = useGames(gamequery);
+   const skeletons = [1, 2, 3, 4, 5, 6]
 
    return (
      <>
        {error && <p>{error}</p>}
 
        <StyleGrid>
-         {isloading && <GameCardSkeleton />}
+         {isloading && skeletons.map(skeleton => <GameCardSkeleton key={skeleton} />)}
          {data.map((game) => (
            <GameCard key={game.id} game={game} />
          ))}
