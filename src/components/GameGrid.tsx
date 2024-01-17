@@ -2,8 +2,7 @@ import styled from "styled-components"
 import GameCard from "./GameCard"
 import { breakpoints } from "../constants/BreakPoints"
 import GameCardSkeleton from "./GameCardSkeleton"
-import useGames, { Platform } from "../hooks/useGames"
-import { Genre } from "../hooks/useGenres"
+import useGames from "../hooks/useGames"
 import { GameQuery } from "../App"
 
  const StyleGrid = styled.div `
