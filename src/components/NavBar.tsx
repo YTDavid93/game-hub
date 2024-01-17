@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.webp";
+import SearchInputs from "./SearchInputs";
 
 interface Props {
   children: ReactNode;
@@ -20,6 +21,7 @@ const NavBar = ({ children }: Props) => {
   return (
     <Flex>
       <Image src={logo} />
+      <SearchInputs />
       {children}
     </Flex>
   );
