@@ -9,6 +9,7 @@ import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
 
 
 const Grid = styled.div`
@@ -41,6 +42,11 @@ const Main = styled.main`
   grid-area: main;
 `;
 
+const Hstack = styled.div`
+  display: flex;
+  margin-bottom: 5px;
+`
+
 export interface GameQuery {
    genre: Genre | null;
    platform: Platform | null
@@ -72,10 +78,13 @@ const App = () => {
           />
         </Aside>
         <Main>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}
-          />
+          <Hstack>
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}
+            />
+            <SortSelector />
+          </Hstack>
           <GameGrid
            gamequery={gameQuery}
           />
