@@ -31,7 +31,6 @@ interface Props {
    return (
      <>
        {error && <p>{error}</p>}
-
        <StyleGrid>
          {isloading && skeletons.map(skeleton => <GameCardSkeleton key={skeleton} />)}
          {data.map((game) => (

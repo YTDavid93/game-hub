@@ -17,3 +17,7 @@ body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
 }
+
+form {
+  width: 90%;
+}

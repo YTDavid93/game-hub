@@ -5,6 +5,7 @@ import SearchInputs from "./SearchInputs";
 
 interface Props {
   children: ReactNode;
+  onSearch: (searchText: string) => void;
 }
 
 const Flex = styled.div`
@@ -17,11 +18,11 @@ const Image = styled.img`
   width: 60px;
 `;
 
-const NavBar = ({ children }: Props) => {
+const NavBar = ({ children, onSearch }: Props) => {
   return (
     <Flex>
       <Image src={logo} />
-      <SearchInputs />
+      <SearchInputs onSearch={onSearch} />
       {children}
     </Flex>
   );

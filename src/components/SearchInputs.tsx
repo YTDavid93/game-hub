@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import styled from "styled-components";
 
+
 const InputItem = styled.input`
-  width: 90%;
+  width: 100%;
   border-radius: 20px;
   border: none;
   height: 45px;
@@ -15,11 +17,19 @@ const InputItem = styled.input`
   }
 `;
 
-const SearchInputs = () => {
+interface Props {
+    onSearch: (searchText: string) => void;
+}
+
+const SearchInputs = ({ onSearch }: Props) => {
+  const ref = useRef<HTMLInputElement>(null)
   return (
-   <>
-    <InputItem type="text" placeholder="Search games..." />  
-   </> 
+   <form onSubmit={(e) => {
+      e.preventDefault();
+      if(ref.current) onSearch(ref.current.value)
+    }}>
+    <InputItem ref={ref} type="text" placeholder="Search games..." />  
+   </form> 
   )
 }
 
