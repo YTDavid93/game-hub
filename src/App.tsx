@@ -48,8 +48,9 @@ const Hstack = styled.div`
 `
 
 export interface GameQuery {
-   genre: Genre | null;
-   platform: Platform | null
+  genre: Genre | null;
+  platform: Platform | null;
+  sortOrder: string;
 }
 
 const App = () => {
@@ -74,20 +75,25 @@ const App = () => {
         <Aside>
           <GenreList
             selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
         </Aside>
         <Main>
           <Hstack>
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
             />
-            <SortSelector />
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectOrders={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            />
           </Hstack>
-          <GameGrid
-           gamequery={gameQuery}
-          />
+          <GameGrid gamequery={gameQuery} />
         </Main>
       </Grid>
     </ThemeProvider>

@@ -1,28 +1,50 @@
 import { Button, Menu, MenuItem, MenuList } from "@mui/material";
 import { useState } from "react";
 
-const SortSelector = () => {
 
-     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-      const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+interface Props {
+    onSelectOrders: (sortOrder: string) => void;
+    sortOrder: string;
+}
+
+const SortSelector = ({ onSelectOrders, sortOrder }: Props) => {
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
       };
-
-      const handleClose = () => {
+    const handleClose = () => {
         setAnchorEl(null);
-      };
+    };
+
+    const sortOrders = [
+      { value: "", label: "Relevance" },
+      { value: "-added", label: "Date added" },
+      { value: "name", label: "Name" },
+      { value: "-released", label: "Release Date" },
+      { value: "-metacritic", label: "Popularity" },
+      { value: "-rating", label: "Avearge Rating" },
+    ];
+
+    const currentShortOrder = sortOrders.find(order => order.value === sortOrder)
+
     return (
       <div>
-        <Button onClick={handleClick}>Order By: Relevance</Button>
+        <Button onClick={handleClick}>Order by: {currentShortOrder?.label || 'Relevance'}</Button>
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
           <MenuList>
-            <MenuItem>Item 1</MenuItem>
-            <MenuItem>Item 2</MenuItem>
-            <MenuItem>Item 3</MenuItem>
+            {sortOrders.map((Order) => (
+              <MenuItem
+                onClick={() => onSelectOrders(Order.value)}
+                key={Order.value}
+                value={Order.value}
+              >
+                {Order.label}
+              </MenuItem>
+            ))}
           </MenuList>
         </Menu>
       </div>
