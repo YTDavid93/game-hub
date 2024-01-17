@@ -1,21 +1,20 @@
 import styled from "styled-components";
-import getCroppedImageUrl from "./services/image-url";
+import getCroppedImageUrl from "../services/image-url";
 import useGenres, { Genre } from "../hooks/useGenres";
-
 
 const List = styled.ul`
   list-style: none;
   padding-left: 0px;
-`
+`;
 
 const ListItem = styled.li`
   padding-bottom: 10px;
-`
+`;
 
 const HStack = styled.div`
-   display: flex;
-   align-items: center;
-`
+  display: flex;
+  align-items: center;
+`;
 const Image = styled.img`
   object-fit: cover;
   width: 32px;
@@ -23,22 +22,22 @@ const Image = styled.img`
   border-radius: 8px;
 `;
 
-const Button = styled.button<{ $isSelected: boolean}>`
+const Button = styled.button<{ $isSelected: boolean }>`
   margin: 0px 0px 0px 8px;
   font-size: 1rem;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
-  font-weight: ${({ $isSelected}) => ($isSelected ? 'bold' : 'normal')};
+  font-weight: ${({ $isSelected }) => ($isSelected ? "bold" : "normal")};
 `;
 
 interface Props {
-   onSelectGenre: (genre: Genre) => void;
-   selectedGenre: Genre | null;
+  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre}: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data } = useGenres();
   return (
     <List>
@@ -58,6 +57,6 @@ const GenreList = ({ onSelectGenre, selectedGenre}: Props) => {
       ))}
     </List>
   );
-}
+};
 
-export default GenreList
+export default GenreList;

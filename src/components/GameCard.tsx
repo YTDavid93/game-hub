@@ -1,11 +1,11 @@
-import styled from "styled-components"
-import { Game } from "../hooks/useGames"
+import styled from "styled-components";
+import { Game } from "../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
 import CriticScore from "./CriticScore";
-import getCroppedImageUrl from "./services/image-url";
+import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
-    game: Game
+  game: Game;
 }
 
 const Image = styled.img`
@@ -32,10 +32,10 @@ const Heading = styled.h1`
 `;
 
 const HorizentalDiv = styled.div`
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const GameCard = ({ game }: Props) => {
   return (
@@ -50,6 +50,6 @@ const GameCard = ({ game }: Props) => {
       </HorizentalDiv>
     </Items>
   );
-}
+};
 
-export default GameCard
+export default GameCard;
