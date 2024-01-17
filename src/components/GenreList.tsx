@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import getCroppedImageUrl from "../services/image-url";
 import useGenres, { Genre } from "../hooks/useGenres";
+import GenreListSpinner from "./GenreListSpinner";
 
 const List = styled.ul`
   list-style: none;
@@ -38,7 +39,9 @@ interface Props {
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { data } = useGenres();
+  const { data, isloading } = useGenres();
+
+  if (isloading) return <GenreListSpinner />
   return (
     <List>
       {data.map((genre) => (
