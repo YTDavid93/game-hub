@@ -4,6 +4,7 @@ import { breakpoints } from "../constants/BreakPoints"
 import GameCardSkeleton from "./GameCardSkeleton"
 import useGames, { Platform } from "../hooks/useGames"
 import { Genre } from "../hooks/useGenres"
+import { GameQuery } from "../App"
 
  const StyleGrid = styled.div `
     display: grid;
@@ -20,12 +21,11 @@ import { Genre } from "../hooks/useGenres"
 `
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gamequery: GameQuery
 }
 
- const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-   const { data, error, isloading } = useGames(selectedGenre, selectedPlatform);
+ const GameGrid = ({ gamequery }: Props) => {
+   const { data, error, isloading } = useGames(gamequery);
 
    return (
      <>

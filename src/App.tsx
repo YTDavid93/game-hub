@@ -41,11 +41,14 @@ const Main = styled.main`
   grid-area: main;
 `;
 
+export interface GameQuery {
+   genre: Genre | null;
+   platform: Platform | null
+}
+
 const App = () => {
   
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
@@ -64,18 +67,17 @@ const App = () => {
         </Nav>
         <Aside>
           <GenreList
-            selectedGenre={selectedGenre}
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
+            selectedGenre={gameQuery.genre}
+            onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})}
           />
         </Aside>
         <Main>
           <PlatformSelector
-            selectedPlatform={selectedPlatform}
-            onSelectPlatform={(plaform) => setSelectedPlatform(plaform)}
+            selectedPlatform={gameQuery.platform}
+            onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}
           />
           <GameGrid
-            selectedPlatform={selectedPlatform}
-            selectedGenre={selectedGenre}
+           gamequery={gameQuery}
           />
         </Main>
       </Grid>
