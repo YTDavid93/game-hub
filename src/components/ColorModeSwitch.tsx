@@ -7,11 +7,11 @@ interface Props {
   theme: "dark" | "light";
 }
 
-const StyledButton = styled.button `
-    border: none;
-    background: none;
-    cursor: pointer;
-`
+const StyledButton = styled.button`
+  border: none;
+  /* background: none; */
+  cursor: pointer;
+`;
 
 const ColorModeSwitch = ({ onChange, theme }: Props) => {
   return (
@@ -19,6 +19,6 @@ const ColorModeSwitch = ({ onChange, theme }: Props) => {
       {theme === "light" ? <MoonIcons /> : <SunIcon />}
     </StyledButton>
   );
-}
+};
 
-export default ColorModeSwitch
+export default ColorModeSwitch;

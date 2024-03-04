@@ -21,7 +21,6 @@ import { GameQuery } from "../App"
 
 interface Props {
   gamequery: GameQuery;
-  
 }
 
  const GameGrid = ({ gamequery }: Props) => {
