@@ -9,7 +9,7 @@ interface Props {
 
 const StyledButton = styled.button`
   border: none;
-  /* background: none; */
+  background: none;
   cursor: pointer;
 `;
 
