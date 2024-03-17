@@ -10,6 +10,7 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 
 const Grid = styled.div`
@@ -80,6 +81,7 @@ const App = () => {
           />
         </Aside>
         <Main>
+        <GameHeading gameQuery={gameQuery} />
           <Hstack>
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
