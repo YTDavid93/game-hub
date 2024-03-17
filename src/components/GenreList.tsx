@@ -33,6 +33,11 @@ const Button = styled.button<{ $isSelected: boolean }>`
   font-weight: ${({ $isSelected }) => ($isSelected ? "bold" : "normal")};
 `;
 
+const Heading = styled.h1`
+  font-size: 24px;
+  margin-bottom: 10px;
+`;
+
 interface Props {
   onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
@@ -41,24 +46,27 @@ interface Props {
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isloading } = useGenres();
 
-  if (isloading) return <GenreListSpinner />
+  if (isloading) return <GenreListSpinner />;
   return (
-    <List>
-      {data.map((genre) => (
-        <ListItem key={genre.id}>
-          <HStack>
-            <Image src={getCroppedImageUrl(genre.image_background)} />
-            <Button
-              $isSelected={genre.id === selectedGenre?.id}
-              onClick={() => onSelectGenre(genre)}
-              as="a"
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading>Genres</Heading>
+      <List>
+        {data.map((genre) => (
+          <ListItem key={genre.id}>
+            <HStack>
+              <Image src={getCroppedImageUrl(genre.image_background)} />
+              <Button
+                $isSelected={genre.id === selectedGenre?.id}
+                onClick={() => onSelectGenre(genre)}
+                as="a"
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
