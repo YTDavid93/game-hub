@@ -35,19 +35,20 @@ const HorizentalDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 10px;
 `;
 
 const GameCard = ({ game }: Props) => {
   return (
     <Items>
       <Image src={getCroppedImageUrl(game.background_image)} />
-      <Heading>{game.name}</Heading>
       <HorizentalDiv>
         <PlatformIcons
           platforms={game.parent_platforms.map((p) => p.platform)}
         />
         <CriticScore score={game.metacritic} />
       </HorizentalDiv>
+      <Heading>{game.name}</Heading>
     </Items>
   );
 };
