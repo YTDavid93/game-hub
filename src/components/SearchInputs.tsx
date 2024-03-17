@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
-import { AiOutlineClose } from "react-icons/ai";
 
 const InputItem = styled.input`
   width: 100%;
